@@ -1,2 +1,2 @@
 # JavaCode
-Java data structure
+Java code
