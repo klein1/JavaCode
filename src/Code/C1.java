@@ -1,35 +1,37 @@
 package Code;
 
 /**
- * switch支持的表达式类型
+ * 字符串变换，任意字符移到末尾次数
  */
 public class C1 {
-    enum en{
-        val1(1), val2(2);
-        private int val;
-        en(int val){
-            this.val = val;
-        }
-        en(){
-            this.val = 0;
-        }
-    }
 
     public static void main(String[] args) {
-        String a = "";
-        int b = 1;
-        short c = 1;
-        byte d = 1;
-        char e = 1;
-        Integer f = 1;
-        Short g = 1;
-        Byte h = 1;
-        Character i = 1;
-        en j = en.val1;
+        StringBuilder s = new StringBuilder("acdkt");
+        StringBuilder t = new StringBuilder("dckat");
+        int n = s.length();
+        int count = 0;
 
-        switch(j){
-            case val1:
-                System.out.println(j.val);break;
+        for (int i = n-1; i >= 0; i--) {
+            if(s.toString().equals(t.toString())){
+                System.out.println(count);
+                break;
+            }
+            int j;
+            if(s.charAt(i) != t.charAt(i)){
+                for (j = n-1; j >=0; j--) {
+                    if(s.charAt(j) == t.charAt(i))
+                        break;
+                }
+                if(j == -1){
+                    System.out.println(-1);
+                    break;
+                }
+
+                s.deleteCharAt(j);
+                s.insert(n-1, t.charAt(i));
+            }
+            count++;
+            n--;
         }
     }
 }

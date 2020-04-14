@@ -1,7 +1,5 @@
 package Queue;
 
-import java.util.Queue;
-
 public class LinkedQueue<T> implements IQueue<T> {
 
     private QueueNode<T> head;

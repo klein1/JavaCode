@@ -1,7 +1,5 @@
 package Queue;
 
-import java.util.ArrayList;
-
 public class SeqQueue<T> implements IQueue<T> {
 
     private static final int DEFAULT_CAPACITY = 64;
@@ -14,12 +12,11 @@ public class SeqQueue<T> implements IQueue<T> {
         this(DEFAULT_CAPACITY);
     }
 
-    public SeqQueue(int length) {
-        if (length < DEFAULT_CAPACITY)
-            length = DEFAULT_CAPACITY;
-        this.element = new Object[Math.abs(length)];
+    public SeqQueue(int capacity) {
+        assert capacity != 0;
+        this.element = new Object[Math.abs(capacity)];
         this.head = this.tail = 0;
-        this.capacity = length;
+        this.capacity = capacity;
     }
 
     @Override
