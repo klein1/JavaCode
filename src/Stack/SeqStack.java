@@ -1,5 +1,7 @@
 package Stack;
 
+import java.util.Arrays;
+
 public class SeqStack<T> implements IStack<T> {
 
     private static final int DEFAULT_CAPACITY = 64;
@@ -13,7 +15,8 @@ public class SeqStack<T> implements IStack<T> {
     }
 
     public SeqStack(int capacity){
-        assert capacity != 0;
+        if (capacity < 1)
+            throw new IllegalArgumentException("Capacity too small.");
         this.element = new Object[Math.abs(capacity)];
         this.top = -1;
         this.capacity = capacity;
@@ -43,9 +46,8 @@ public class SeqStack<T> implements IStack<T> {
         if(item == null)
             return;
         if(isFull()){
-            Object[] newer = new Object[this.capacity * GROW_FACTOR];
-            System.arraycopy(this.element, 0, newer, 0, this.capacity);
-            this.element = newer;
+            this.capacity *= GROW_FACTOR;
+            this.element = Arrays.copyOf(this.element, this.capacity);
         }
         this.top++;
         this.element[this.top] = item;

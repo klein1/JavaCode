@@ -13,7 +13,8 @@ public class SeqQueue<T> implements IQueue<T> {
     }
 
     public SeqQueue(int capacity) {
-        assert capacity != 0;
+        if (capacity < 1)
+            throw new IllegalArgumentException("Capacity too small.");
         this.element = new Object[Math.abs(capacity)];
         this.head = this.tail = 0;
         this.capacity = capacity;
