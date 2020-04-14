@@ -11,8 +11,9 @@ public class Main {
 //        method = new InsertionSort();
 //        method = new ShellSort();
 //        method = new SelectionSort();
-//        method = new QuickSort();
-        method = new HeapSort();
+        method = new QuickSort();
+//        method = new HeapSort();
+//        method = new MergeSort();
 
         method.sort(a);
         for (int i : a) {
