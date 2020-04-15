@@ -1,5 +1,8 @@
 package Tools;
 
+/**
+ * 泛型使用
+ */
 public class T_generic {
     //注意：Number并没有实现Comparable
     private static <T extends Number & Comparable<? super T>> T min(T[] values) {

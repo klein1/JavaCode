@@ -1,5 +1,8 @@
 package Tools;
 
+/**
+ * 枚举使用
+ */
 public class T_enum {
     private PizzaStatus status;
 

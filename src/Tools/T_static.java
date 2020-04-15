@@ -1,5 +1,8 @@
 package Tools;
 
+/**
+ * 静态代码执行顺序
+ */
 public class T_static {
 
     public T_static() {
