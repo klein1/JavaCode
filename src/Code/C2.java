@@ -7,15 +7,15 @@ package Code;
 public class C2 {
 
     public static void main(String[] args) {
-        int[] nums = new int[]{2,3,1,1,4};
-//        int[] nums = new int[]{3,2,1,0,4};
+//        int[] nums = new int[]{2,3,1,1,4};
+        int[] nums = new int[]{3,2,1,0,4};
         System.out.println(canJump(nums));
 
     }
 
     private static boolean canJump(int[] nums) {
 //        return jump(nums, 0, nums.length);
-        return distance(nums);
+        return standard(nums);
     }
 
     private static boolean jump(int[] nums, int cur, int n){
@@ -31,7 +31,7 @@ public class C2 {
         return false;
     }
 
-    private static boolean distance(int[] nums){
+    private static boolean standard(int[] nums){
         int max = 0;
         for (int i = 0; i < nums.length; i++) {
             if(max >= i){
