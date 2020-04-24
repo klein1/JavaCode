@@ -1,12 +1,13 @@
 package Code;
-
 import java.util.Scanner;
 
-//        6 5
-//        8 3 10 2 3 8
-//        0 0 1 0 0 0
-
-
+/**
+ * 火车过隧道，最少亮灯数
+ *
+ 6 5
+ 8 3 10 2 3 8
+ 0 0 1 0 0 0
+ */
 public class C4 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
