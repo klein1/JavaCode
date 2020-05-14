@@ -1,27 +1,41 @@
 package Code;
 
-
-import java.util.Random;
-import java.util.Scanner;
-
+/**
+ * 三进制数求和
+ */
 public class C5 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        String S = sc.next();
-        String[] tickets = new String[N];
-        for (int i = 0; i < tickets.length; i++) {
-            tickets[i] = sc.next();
-        }
-        int K = sc.nextInt();
-
-//        Random r = new Random(1);
-//        System.out.println(r.nextInt(N));
-        if(S.equals("aabacdt"))
-            System.out.println(5);
-        else if(S.equals("drawstringandatickets"))
-            System.out.println(4);
-        else
-            System.out.println((int) (Math.random()*N));
+        String s = plus("121", "1212");
+        System.out.println(s);
     }
+
+    static String plus(String num1, String num2) {
+        StringBuilder sb = new StringBuilder();
+        int pre = 0;
+        while (num1.length() != num2.length()) {
+            if (num1.length() > num2.length()) {
+                num2 = "0" + num2;
+            } else {
+                num1 = "0" + num1;
+            }
+        }
+        for (int i = num1.length() - 1; i >= 0; i--) {
+            int x = num1.charAt(i) - '0';
+            int y = num2.charAt(i) - '0';
+            int sum = x + y + pre;
+            if (sum >= 3) {
+                pre = 1;
+                sb.append(sum - 3);
+            } else {
+                pre = 0;
+                sb.append(sum);
+            }
+        }
+        if (pre > 0) {
+            sb.append(pre);
+        }
+        return sb.reverse().toString();
+    }
+
+
 }

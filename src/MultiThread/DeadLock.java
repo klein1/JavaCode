@@ -1,10 +1,9 @@
-package Tools;
+package MultiThread;
 
 /**
  * 死锁
  */
-public class T_lock {
-
+public class DeadLock {
     private static Object resource1 = new Object();//资源 1
     private static Object resource2 = new Object();//资源 2
 

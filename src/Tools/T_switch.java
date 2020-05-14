@@ -16,6 +16,7 @@ public class T_switch {
     }
 
     public static void main(String[] args) {
+        // 一共 10 种 (jdk1.8)
         String a = "";
         int b = 1;
         short c = 1;
