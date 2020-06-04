@@ -1,13 +1,15 @@
 package MultiThread;
 
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /**
  * ThreadLocal
  */
 public class ThreadLocals implements Runnable{
-
+    Map map = new HashMap(); // Node<K,V>[]  —  Entry[]
     // SimpleDateFormat 不是线程安全的，所以每个线程都要有自己独立的副本
     private static final ThreadLocal<SimpleDateFormat> formatter = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyyMMdd HHmm"));
     private static final ThreadLocal<SimpleDateFormat> formatter2 = new ThreadLocal<SimpleDateFormat>(){
