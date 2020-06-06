@@ -5,6 +5,8 @@ import java.util.concurrent.Executors;
 
 public class Main {
 
+    int value;
+
     public static void main(String[] args) {
         Product p = new Product() {
             @Override

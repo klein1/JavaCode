@@ -1,7 +1,7 @@
 package Tools;
 
 /**
- *  try catch final 执行顺序
+ *  try catch finally 执行顺序
  *
  *  如果try语句里有return，那么代码的行为如下：
  1.如果有返回值，就把返回值保存到局部变量中
@@ -9,7 +9,7 @@ package Tools;
  3.执行完finally语句后，返回之前保存在局部变量表里的值
  *
  */
-public class T_final {
+public class T_finally {
     public static void main(String[] args) {
         System.out.println( test() );
     }
@@ -20,6 +20,7 @@ public class T_final {
             System.out.println("这里是try");
             return test2() ;
         }finally {
+//            int a = 1/0;
             System.out.println("这里是finally");
             return "finally的返回值";
         }
