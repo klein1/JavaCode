@@ -7,7 +7,7 @@ public class MergeSort implements Sort{
     }
 
     private void mergeSort(int[] a, int left, int right) {
-        if(left == right) {
+        if(left >= right) {
             return;
         }
         int mid = left + ((right - left) >> 1);
@@ -23,7 +23,7 @@ public class MergeSort implements Sort{
         int p2 = mid + 1;
 
         while(p1 <= mid && p2 <= right) {
-            temp[i++] = a[p1] < a[p2] ? a[p1++] : a[p2++];
+            temp[i++] = a[p1] <= a[p2] ? a[p1++] : a[p2++];
         }
         while(p1 <= mid) {
             temp[i++] = a[p1++];
