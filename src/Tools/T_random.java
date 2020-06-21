@@ -15,8 +15,7 @@ public class T_random {
         System.out.println();
 
         int max=100,min=1;
-        // Math.random() : [0,1)
-        int ran2 = (int) (Math.random()*(max-min)+min);
+        int ran2 = (int) (Math.random()*(max-min)+min); // Math.random() : [0,1)
         System.out.println(ran2);
 
         long randomNum = System.currentTimeMillis();

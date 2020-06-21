@@ -83,13 +83,16 @@ public class Main {
         node2.left = node4;
 
         Tree tree = new Tree();
+//        tree.preOrderRe(node1);
+//        tree.postOrderRe(node1);
+        tree.inOrderRe(node1);
+        System.out.println();
 //        tree.preOrder(node1);
-//        System.out.println();
-//        tree.inOrder(node1);
-//        System.out.println();
+        tree.inOrder(node1);
 //        tree.postOrder(node1);
-//        System.out.println();
-        tree.levelOrder(node1);
+
+//        tree.levelOrder(node1);
+
 
     }
 }
