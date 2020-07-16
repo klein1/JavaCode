@@ -15,6 +15,7 @@ public class BIOClient {
                     try {
                         socket.getOutputStream().write((new Date() + ": hello world").getBytes());
                         Thread.sleep(2000);
+                        socket.getOutputStream().close();
                     } catch (Exception e) {
                     }
                 }
