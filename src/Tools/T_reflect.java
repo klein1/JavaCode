@@ -1,14 +1,18 @@
 package Tools;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.lang.reflect.*;
 
 class TargetObject {
     private String value;
 
+    String content;
+
     public TargetObject() {
         value = "JavaGuide";
+    }
+
+    public TargetObject(String value) {
+        this.value = value;
     }
 
     public void publicMethod(String s) {
@@ -33,7 +37,22 @@ public class T_reflect {
         Method[] methods = tagetClass.getDeclaredMethods();
         for (Method method : methods) {
             System.out.println(method.getName());
+            Class<?> returnType = method.getReturnType();
+            Type genericReturnType = method.getGenericReturnType();
         }
+
+        Field[] fields = tagetClass.getDeclaredFields();
+        for (Field field : fields) {
+            System.out.println(field.getName());
+        }
+
+        tagetClass.getConstructor();
+        Constructor<?> constructor = tagetClass.getConstructor(String.class);
+        for (Class<?> aClass : constructor.getParameterTypes()) {
+            System.out.println(aClass.getSimpleName());
+        }
+
+
         /**
          * 获取指定方法并调用
          */
@@ -46,7 +65,7 @@ public class T_reflect {
         Field field = tagetClass.getDeclaredField("value");
         //为了对类中的参数进行修改我们取消安全检查
         field.setAccessible(true);
-        field.set(targetObject, "JavaGuide");
+        field.set(targetObject, "123");
         /**
          * 调用 private 方法
          */
