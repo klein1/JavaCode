@@ -1,4 +1,7 @@
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
 
@@ -41,6 +44,18 @@ public class Main {
         System.out.println(10<<31);  // 0
         System.out.println(-2<<31);  // 0
         System.out.println(-1<<31);  // 0
+
+        System.out.println(true?3:"true");
+        int aaa = (int)(true?222:26.0);
+        System.out.println(aaa);
+
+        String [] s= new String[]{
+                "dog", "lazy", "a", "over", "jumps", "fox", "brown", "quick", "A"
+        };
+        int[] nums = new int[]{1,2,3};
+        List<String> list1 = Arrays.asList(s);
+        List<int[]> list2 = Arrays.asList(nums);
+
 
 
 //        System.out.println(canPermutePalindrome("AaBb//a"));

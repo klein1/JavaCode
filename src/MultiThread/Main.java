@@ -7,7 +7,7 @@ public class Main {
 
     int value;
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Product p = new Product() {
             @Override
             public String getName() {
@@ -27,6 +27,11 @@ public class Main {
         Runnable runnable = new MyRunnable("runnable");
         Callable c = Executors.callable(runnable);
 
+        for (int i = 0; i < 10000; i++) {
+//            new Thread(new Example()).start();
+            new Example2().start();
+        }
+
 
     }
 }
@@ -39,4 +44,34 @@ class Prod{
     String getName(){
         return "";
     };
+}
+
+class Example implements Runnable{
+
+    static int i = 0;
+
+    @Override
+    public void run() {
+        System.out.println(i++);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class Example2 extends Thread{
+
+    static int i = 0;
+
+    @Override
+    public void run() {
+        System.out.println(i++);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

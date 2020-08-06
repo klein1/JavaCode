@@ -12,11 +12,11 @@ public class ThreadLocals implements Runnable{
     Map map = new HashMap(); // Node<K,V>[]  —  Entry[]
     // SimpleDateFormat 不是线程安全的，所以每个线程都要有自己独立的副本
     private static final ThreadLocal<SimpleDateFormat> formatter = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyyMMdd HHmm"));
-    private static final ThreadLocal<SimpleDateFormat> formatter2 = new ThreadLocal<SimpleDateFormat>(){
+    private static final ThreadLocal<String> formatter2 = new ThreadLocal<String>(){
         @Override
-        protected SimpleDateFormat initialValue()
+        protected String initialValue()
         {
-            return new SimpleDateFormat("yyyyMMdd HHmm");
+            return "Hello";
         }
     };
 
@@ -27,6 +27,8 @@ public class ThreadLocals implements Runnable{
             Thread.sleep(new Random().nextInt(1000));
             t.start();
         }
+
+        System.out.println(formatter2.get());
     }
 
     @Override

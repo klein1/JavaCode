@@ -82,7 +82,7 @@ public class Tree<T> implements ITree<T> {
     }
 
     public void preOrderRe(TreeNode<T> p) {//非递归实现
-        Stack<TreeNode<T>> stack = new Stack<TreeNode<T>>();
+        Stack<TreeNode<T>> stack = new Stack<>();
         while (p != null || !stack.isEmpty()) {
             while (p != null) {
                 nodeData(p);
