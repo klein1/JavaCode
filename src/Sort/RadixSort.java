@@ -87,8 +87,8 @@ public class RadixSort implements Sort {
             max = Math.max(max, anArr);
         }
         int n = String.valueOf(max).length();
-//        sort(a, n);
-        LSDSort(a, n);
+        sort(a, n);
+//        LSDSort(a, n);
 //        MSDSort(a, n);
     }
 }

@@ -25,5 +25,11 @@ public class Main {
         char[] dest = msg.toCharArray();
         System.out.println(Arrays.toString(dest));
 
+        // Integer.toString 进制转换
+        System.out.println(Integer.toString(100, 2)); // 1100100
+        System.out.println(Integer.toString(100)); // 100
+        System.out.println(Integer.toString(100, 8)); // 144
+        System.out.println(Integer.toString(100, 16)); // 64
+
     }
 }
