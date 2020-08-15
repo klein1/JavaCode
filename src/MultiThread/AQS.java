@@ -1,9 +1,9 @@
 package MultiThread;
 
+import jdk.nashorn.internal.ir.CallNode;
+
 import java.util.concurrent.*;
-import java.util.concurrent.locks.AbstractQueuedSynchronizer;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.*;
 
 /**
  * AQS ReentrantLock Semaphore CountDownLatch CyclicBarrier
@@ -11,9 +11,12 @@ import java.util.concurrent.locks.ReentrantLock;
 public class AQS {
 //    private static Lock reentrantLock = new ReentrantLock();
     private static Lock reentrantLock = new ReentrantLock(true);
+    private ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
     // 需要同步的线程数量
-    private static final CyclicBarrier cyclicBarrier = new CyclicBarrier(5);
+    private static final CyclicBarrier cyclicBarrier = new CyclicBarrier(5, ()->{
+        System.out.println("end");
+    });
 
     // 请求的数量
     private static final int threadCount = 100;

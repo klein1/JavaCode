@@ -49,13 +49,6 @@ public class Main {
         int aaa = (int)(true?222:26.0);
         System.out.println(aaa);
 
-        String [] s= new String[]{
-                "dog", "lazy", "a", "over", "jumps", "fox", "brown", "quick", "A"
-        };
-        int[] nums = new int[]{1,2,3};
-        List<String> list1 = Arrays.asList(s);
-        List<int[]> list2 = Arrays.asList(nums);
-
 
 
 //        System.out.println(canPermutePalindrome("AaBb//a"));
