@@ -12,41 +12,25 @@ public class ConsumerLock {
 
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                try {
-                    data.increment();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                data.increment();
             }
         }, "Producer1").start();
 
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                try {
-                    data.decrease();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                data.decrease();
             }
         }, "Consumer1").start();
 
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                try {
-                    data.increment();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                data.increment();
             }
         }, "Producer2").start();
 
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                try {
-                    data.decrease();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                data.decrease();
             }
         }, "Consumer2").start();
 
@@ -58,7 +42,7 @@ class DataLock {
     private Lock lock = new ReentrantLock();
     Condition condition = lock.newCondition();
 
-    public void increment() throws InterruptedException {
+    public void increment() {
         lock.lock();
         try {
             while (num != 0) {
@@ -74,7 +58,7 @@ class DataLock {
         }
     }
 
-    public void decrease() throws InterruptedException {
+    public void decrease(){
         lock.lock();
         try {
             while (num == 0) {

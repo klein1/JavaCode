@@ -19,7 +19,7 @@ public class AQS {
     });
 
     // 请求的数量
-    private static final int threadCount = 100;
+    private static final int threadCount = 10;
 
     public static void main(String[] args)  throws InterruptedException{
 //        new Thread(() -> testReentrantLock(), "线程A").start();
@@ -116,7 +116,8 @@ public class AQS {
         System.out.println("threadnum:" + threadnum + "is ready");
         try {
             /**等待60秒，保证子线程完全执行结束*/
-            cyclicBarrier.await(60, TimeUnit.SECONDS);
+//            cyclicBarrier.await(60, TimeUnit.SECONDS);
+            cyclicBarrier.await();
         } catch (Exception e) {
             System.out.println("-----CyclicBarrierException------");
         }

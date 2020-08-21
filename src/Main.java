@@ -49,6 +49,8 @@ public class Main {
         int aaa = (int)(true?222:26.0);
         System.out.println(aaa);
 
+        System.out.println(0.1+0.2);
+
 
 
 //        System.out.println(canPermutePalindrome("AaBb//a"));
