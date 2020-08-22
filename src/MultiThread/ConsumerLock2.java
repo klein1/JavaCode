@@ -12,19 +12,19 @@ public class ConsumerLock2 {
 
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                data.printA(i);
+                data.printA();
             }
         }, "A").start();
 
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                data.printB(i);
+                data.printB();
             }
         }, "B").start();
 
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
-                data.printC(i);
+                data.printC();
             }
         }, "C").start();
     }
@@ -37,15 +37,14 @@ class DataLock2 {
     Condition condition2 = lock.newCondition();
     Condition condition3 = lock.newCondition();
 
-    public void printA(int i){
+    public void printA(){
         lock.lock();
         try {
-            System.out.println(Thread.currentThread().getName() + "=>" + i + " get lock");
             while(state != 1)
                 condition1.await();
             System.out.println(Thread.currentThread().getName() + "=>" + "AAA");
             state = 2;
-            condition2.signal();
+            condition2.signalAll();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
@@ -53,15 +52,14 @@ class DataLock2 {
         }
     }
 
-    public void printB(int i){
+    public void printB(){
         lock.lock();
         try {
-            System.out.println(Thread.currentThread().getName() + "=>" + i + " get lock");
             while(state != 2)
                 condition2.await();
             System.out.println(Thread.currentThread().getName() + "=>" + "BBB");
             state = 3;
-            condition3.signal();
+            condition3.signalAll();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
@@ -69,15 +67,14 @@ class DataLock2 {
         }
     }
 
-    public void printC(int i){
+    public void printC(){
         lock.lock();
         try {
-            System.out.println(Thread.currentThread().getName() + "=>" + i + " get lock");
             while(state != 3)
                 condition3.await();
             System.out.println(Thread.currentThread().getName() + "=>" + "CCC");
             state = 1;
-            condition1.signal();
+            condition1.signalAll();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {

@@ -9,7 +9,9 @@ public class Atomic {
     public static void main(String[] args) {
         {
             int temvalue = 0;
-            AtomicInteger i = new AtomicInteger(0);
+            AtomicInteger i = new AtomicInteger();
+            i.getAndUpdate(a->a+=100);
+            System.out.println(i);
             temvalue = i.getAndSet(3);
             System.out.println("temvalue:" + temvalue + ";  i:" + i);//temvalue:0;  i:3
             temvalue = i.getAndIncrement();

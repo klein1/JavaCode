@@ -1,6 +1,7 @@
 package String;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
 
@@ -30,6 +31,14 @@ public class Main {
         System.out.println(Integer.toString(100)); // 100
         System.out.println(Integer.toString(100, 8)); // 144
         System.out.println(Integer.toString(100, 16)); // 64
+
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+//        sc.nextLine();
+        String b = sc.nextLine();
+
+        System.out.println(a);
+        System.out.println(b);
 
     }
 }

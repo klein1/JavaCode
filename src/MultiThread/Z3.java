@@ -8,5 +8,16 @@ public class Z3 {
     public static void main(String[] args) {
         System.out.println(Thread.activeCount());
         System.out.println("cpu核心数:"+Runtime.getRuntime().availableProcessors());
+
+        new Z3().show();
+
+    }
+
+    void show(){
+        try {
+            wait(0);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

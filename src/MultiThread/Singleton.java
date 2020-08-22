@@ -22,4 +22,19 @@ public class Singleton {
         }
         return uniqueInstance;
     }
+
+    public synchronized static Singleton getUniqueInstance2() {
+        if (uniqueInstance == null) {
+            uniqueInstance = new Singleton();
+        }
+        return uniqueInstance;
+    }
+
+    static class SingletonHolder {
+        static Singleton INSTANCE = new Singleton();
+    }
+
+    public static Singleton getInstance() {
+        return SingletonHolder.INSTANCE;
+    }
 }

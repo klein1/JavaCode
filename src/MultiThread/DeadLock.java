@@ -93,6 +93,7 @@ public class DeadLock {
         while(true){
             if(System.currentTimeMillis() - time >= 3000){
                 thread2.interrupt();
+                break;
             }
         }
     }

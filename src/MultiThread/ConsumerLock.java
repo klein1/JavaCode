@@ -1,5 +1,6 @@
 package MultiThread;
 
+import java.util.UUID;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -8,7 +9,7 @@ public class ConsumerLock {
 
     public static void main(String[] args) {
 
-        DataLock data = new DataLock();
+        DataLock data = new DataLock(1);
 
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
@@ -38,18 +39,26 @@ public class ConsumerLock {
 }
 
 class DataLock {
-    private int num = 0;
+    private Object[] num;
+    private int capacity;
+    private int size;
     private Lock lock = new ReentrantLock();
     Condition condition = lock.newCondition();
+
+    DataLock(int capacity){
+        this.capacity = capacity;
+        num = new Object[capacity];
+    }
 
     public void increment() {
         lock.lock();
         try {
-            while (num != 0) {
+            while (size >= capacity) {
                 condition.await();
             }
-            num++;
-            System.out.println(Thread.currentThread().getName() + "=>" + num);
+            String content = UUID.randomUUID().toString();
+            num[size++] = content;
+            System.out.println(Thread.currentThread().getName() + "=>" + content);
             condition.signalAll();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -61,11 +70,11 @@ class DataLock {
     public void decrease(){
         lock.lock();
         try {
-            while (num == 0) {
+            while (size == 0) {
                 condition.await();
             }
-            num--;
-            System.out.println(Thread.currentThread().getName() + "=>" + num);
+            String content = num[--size].toString();
+            System.out.println(Thread.currentThread().getName() + "=>" + content);
             condition.signalAll();
         } catch (InterruptedException e) {
             e.printStackTrace();

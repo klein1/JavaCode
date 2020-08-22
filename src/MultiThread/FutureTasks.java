@@ -17,6 +17,7 @@ public class FutureTasks {
         FutureTask futureTask2 = new FutureTask(tasks.new MyThread(data), data);
         new Thread(futureTask2, "B").start();
         System.out.println(((Data)futureTask2.get()).s);
+        System.out.println(data.s);
 
     }
 

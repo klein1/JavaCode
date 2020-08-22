@@ -3,6 +3,7 @@ package Tools;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.IntFunction;
 
 public class T_array {
     public static void main(String[] args) {
@@ -30,6 +31,12 @@ public class T_array {
         Object[] newArray = (Object[]) Array.newInstance(wrapperType, Array.getLength(nums));
         for (int i = 0; i < nums.length; i++) {
             newArray[i] = Array.get(nums, i);
+        }
+
+        Integer[] arr = Arrays.stream(nums).boxed().toArray(Integer[]::new);
+        List<Integer> list4 = Arrays.asList(arr);
+        for (Integer integer : list4) {
+            System.out.println(integer);
         }
 
     }
