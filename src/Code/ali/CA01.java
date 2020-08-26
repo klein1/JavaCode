@@ -1,4 +1,4 @@
-package Code;
+package Code.ali;
 
 import java.util.Arrays;
 import java.util.Scanner;

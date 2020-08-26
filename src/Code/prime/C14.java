@@ -1,4 +1,4 @@
-package Code;
+package Code.prime;
 
 import java.util.Comparator;
 import java.util.Scanner;

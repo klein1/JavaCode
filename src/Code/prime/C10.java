@@ -1,4 +1,4 @@
-package Code;
+package Code.prime;
 
 import java.util.ArrayList;
 import java.util.List;

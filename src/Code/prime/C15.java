@@ -1,4 +1,4 @@
-package Code;
+package Code.prime;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;

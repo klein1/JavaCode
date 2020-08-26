@@ -1,4 +1,4 @@
-package Code;
+package Code.prime;
 
 /**
  * 三进制数求和

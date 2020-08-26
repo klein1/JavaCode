@@ -1,4 +1,4 @@
-package Code;
+package Code.prime;
 
 public class CC02 {
 

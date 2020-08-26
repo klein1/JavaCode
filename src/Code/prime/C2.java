@@ -1,4 +1,4 @@
-package Code;
+package Code.prime;
 
 /**
  * 跳跃游戏

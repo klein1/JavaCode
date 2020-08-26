@@ -1,4 +1,4 @@
-package Code;
+package Code.prime;
 
 import java.util.Arrays;
 import java.util.HashMap;

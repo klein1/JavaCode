@@ -1,4 +1,4 @@
-package Code;
+package Code.prime;
 
 /**
  * 字符串变换，任意字符移到末尾次数

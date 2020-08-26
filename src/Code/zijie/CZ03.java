@@ -1,4 +1,4 @@
-package Code;
+package Code.zijie;
 
 import java.util.Scanner;
 import java.util.Arrays;
