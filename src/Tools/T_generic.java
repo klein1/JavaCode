@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * 泛型使用
  */
-public class T_generic {
+public class T_generic{
     //注意：Number并没有实现Comparable
     private static <T extends Number & Comparable<? super T>> T min(T[] values) {
         if (values == null || values.length == 0) return null;
@@ -23,15 +23,22 @@ public class T_generic {
 //        System.out.println(min(new Double[]{1.2, 2.2, -1d}));
 //        String typeError = min(new String[]{"1","3"});//报错
 
-        List<Integer> list = new ArrayList<>();
+        List<? extends Number> list2 = new ArrayList<Integer>();
+//        list2.add(1); //报错
+//        Number n = list2.get(0);
 
-        list.add(12);
-        Class<? extends List> clazz = list.getClass();
-        Method add = clazz.getDeclaredMethod("add", Object.class);
-        add.invoke(list, "kl");
+        List<? super Number> list = new ArrayList<Number>();
+        list.add(1.3);
 
-        System.out.println(list);
+        list.add(1);
+        Object i = list.get(0);
+        System.out.println(i.toString());
 
-
+//        list.add(12);
+//        Class<? extends List> clazz = list.getClass();
+//        Method add = clazz.getDeclaredMethod("add", Object.class);
+//        add.invoke(list, "kl");
+//
+//        System.out.println(list);
     }
 }

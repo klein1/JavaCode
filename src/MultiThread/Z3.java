@@ -13,9 +13,9 @@ public class Z3 {
 
     }
 
-    void show(){
+    synchronized void show(){
         try {
-            wait(0);
+            wait(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
