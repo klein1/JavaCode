@@ -11,7 +11,7 @@ public class Circle {
 
     public static void main(String[] args) {
         Random random = new Random();
-        float[] nums = new float[3];
+        float[] nums = new float[5];
         int count = 0;
         int len = 1000000;
         for (int j = 0; j < len; j++) {
@@ -19,11 +19,15 @@ public class Circle {
                 nums[i] = random.nextFloat();
             }
             Arrays.sort(nums);
-            if(nums[2] - nums[0] <= 0.5 || nums[1] - nums[0] >= 0.5 || nums[2] - nums[1] >= 0.5 )
-                count ++;
+            for (int i = 0; i < nums.length; i++) {
+                if(i != nums.length-1 && Math.abs(nums[i] - nums[i+1]) >= 0.5)
+                    count++;
+                if(i == nums.length-1 && Math.abs(nums[i] - nums[0]) <= 0.5)
+                    count++;
+            }
         }
         BigDecimal bigDecimal = new BigDecimal(String.valueOf(count * 1.0 / len));
-        bigDecimal = bigDecimal.setScale(2, BigDecimal.ROUND_HALF_UP);
+        bigDecimal = bigDecimal.setScale(3, BigDecimal.ROUND_HALF_UP);
         System.out.println(bigDecimal);
 
     }

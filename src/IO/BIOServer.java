@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Date;
 
 public class BIOServer {
 
@@ -29,11 +30,21 @@ public class BIOServer {
                             // 按字节流方式读取数据
                             System.out.println("开始输出");
                             while ((len = inputStream.read(data)) != -1) {
-                                System.out.println(len);
                                 System.out.println(new String(data, 0, len));
                             }
                             System.out.println("输出完毕");
                         } catch (IOException e) {
+                        }
+                    }).start();
+
+                    new Thread(() -> {
+                        try {
+                            while (true) {
+                                socket.getOutputStream().write((new Date() + ": from server").getBytes());
+                                Thread.sleep(2000);
+                            }
+
+                        } catch (Exception e) {
                         }
                     }).start();
 

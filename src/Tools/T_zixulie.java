@@ -5,10 +5,10 @@ import java.util.Arrays;
 public class T_zixulie {
     public static void main(String[] args) {
         int[] a = new int[]{5, 2, 6, 9, 6};
-//        subList(a);
-        System.out.println(longestPalindrome(a));
-
-        System.out.println(longestPalindromeSubseq("cbbd"));
+        allSubList(a);
+//        System.out.println(longestPalindrome(a));
+//
+//        System.out.println(longestPalindromeSubseq("cbbd"));
     }
 
     //连续子序列

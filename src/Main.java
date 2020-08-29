@@ -51,6 +51,8 @@ public class Main {
 
         System.out.println(0.1+0.2);
 
+        System.out.println(1L<<63<<63<<3);
+
 
 
 //        System.out.println(canPermutePalindrome("AaBb//a"));
