@@ -53,6 +53,8 @@ public class Main {
 
         System.out.println(1L<<63<<63<<3);
 
+        long l = 24L*60*60*1000*1000;
+        System.out.println(l/60/60/1000/1000);
 
 
 //        System.out.println(canPermutePalindrome("AaBb//a"));

@@ -1,4 +1,8 @@
 package Tools;
+import net.sf.cglib.proxy.Enhancer;
+import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -57,6 +61,28 @@ class JDKDynamicProxy implements InvocationHandler {
     }
 }
 
+class CGLIBDynamicProxy implements MethodInterceptor {
+
+    private Object targetObject;
+
+    public Object createProxyObject(Object obj) {
+        this.targetObject = obj;
+        Enhancer enhancer = new Enhancer();
+        enhancer.setSuperclass(obj.getClass());
+        enhancer.setCallback(this);
+        Object proxyObj = enhancer.create();
+        // 返回代理对象
+        return proxyObj;
+    }
+
+    @Override
+    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+        System.out.println("Before: "  + method.getName());
+        Object object = methodProxy.invokeSuper(o, objects);
+        System.out.println("After: " + method.getName());
+        return object;
+    }
+}
 
 public class T_proxy {
 
@@ -66,5 +92,9 @@ public class T_proxy {
         UserManager userManagerJDK = (UserManager) jdkDynamicProxy.newProxy(new UserManagerImpl());
         userManagerJDK.addUser("tom", "root");
         userManagerJDK.addUser("jeck", "root");
+
+        CGLIBDynamicProxy cglibDynamicProxy = new CGLIBDynamicProxy();
+        UserManager userManagerCGLIB = (UserManager) cglibDynamicProxy.createProxyObject(new UserManagerImpl());
+        userManagerCGLIB.addUser("li", "root");
     }
 }
