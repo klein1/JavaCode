@@ -1,6 +1,8 @@
 package String;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -39,6 +41,17 @@ public class Main {
 
         System.out.println(a);
         System.out.println(b);
+
+        List<String> names=new ArrayList<String>();
+        names.add("1");
+        names.add("2");
+        names.add("3");
+        System.out.println(String.join("-", names));
+
+        String[] arrStr=new String[]{"a","b","c"};
+        System.out.println(String.join("-", arrStr));
+
+        System.out.println(String.join(",", "5454", "6"));
 
         System.out.println("over");
 

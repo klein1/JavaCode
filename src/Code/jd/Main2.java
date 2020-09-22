@@ -12,31 +12,22 @@ public class Main2 {
 
         for(String t: s.split(" ")){
             try {
-                int start = 0, end = 0;
-                boolean flag = false;
-                for (int i = 0; i < t.length(); i++) {
-                    if(t.charAt(i) >= '0' && t.charAt(i) <= '9'){
-                        if(!flag){
-                            flag = true;
-                            start = i;
-                            end = i;
-                        }
-                        else
-                            end = i;
-                    }
-                    else {
-                            int temp = Integer.parseInt(t.substring(start, end + 1));
-                            if (temp >= 1000 && temp <= 3999)
-                                list.add(temp);
-                            flag = false;
-                    }
-
-                    if(i == t.length()-1){
-                        int temp = Integer.parseInt(t.substring(start, end));
-                        if (temp >= 1000 && temp <= 3999)
-                            list.add(temp);
-                    }
+                StringBuilder sb = new StringBuilder(t);
+                for (int i = 0; i < sb.length(); i++) {
+                    if (sb.charAt(i) < '0' || sb.charAt(i) > '9')
+                        sb.setCharAt(i, ' ');
                 }
+
+                String n = sb.toString().replaceAll("\\s+", " ");
+
+                for (String u : n.split(" ")) {
+                    if(u.length() > 4)
+                        u = u.substring(0, u.length()-1);
+                    int temp = Integer.parseInt(u);
+                    if (temp >= 1000 && temp <= 3999)
+                        list.add(temp);
+                }
+
             } catch (Exception e) {
             }
         }

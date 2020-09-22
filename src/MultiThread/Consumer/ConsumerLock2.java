@@ -1,4 +1,4 @@
-package MultiThread;
+package MultiThread.Consumer;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

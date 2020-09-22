@@ -1,10 +1,12 @@
-package MultiThread;
+package MultiThread.Consumer;
 
-public class ConsumerSync {
+import java.util.concurrent.Semaphore;
+
+public class ConsumerSema {
 
     public static void main(String[] args) {
 
-        DataSync data = new DataSync();
+        DataSema data = new DataSema();
 
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
@@ -49,24 +51,27 @@ public class ConsumerSync {
     }
 }
 
-class DataSync {
+class DataSema {
     private int num = 0;
+    Semaphore produceCount = new Semaphore(5);
+    Semaphore consumeCount = new Semaphore(0);
+    Semaphore mute = new Semaphore(1);
 
-    public synchronized void increment() throws InterruptedException {
-        while (num >= 10) {
-            this.wait();
-        }
+    public void increment() throws InterruptedException {
+        produceCount.acquire();
+        mute.acquire();
         num++;
         System.out.println(Thread.currentThread().getName() + "=>" + num);
-        this.notifyAll();
+        mute.release();
+        consumeCount.release();
     }
 
-    public synchronized void decrease() throws InterruptedException {
-        while (num == 0) {
-            this.wait();
-        }
+    public void decrease() throws InterruptedException {
+        consumeCount.acquire();
+        mute.acquire();
         num--;
         System.out.println(Thread.currentThread().getName() + "=>" + num);
-        this.notifyAll();
+        mute.release();
+        produceCount.release();
     }
 }
