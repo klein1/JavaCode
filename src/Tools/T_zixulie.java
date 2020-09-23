@@ -11,7 +11,7 @@ public class T_zixulie {
 //        System.out.println(longestPalindromeSubseq("cbbd"));
     }
 
-    //连续子序列
+    //连续子串
     private static void subList(int[] a) {
         int i, j, k;
         for (i = 0; i < a.length; i++) {
@@ -24,7 +24,7 @@ public class T_zixulie {
         }
     }
 
-    //所有子序列
+    //所有子串
     private static void allSubList(int[] a) {
         for (int i = 0; i < 1 << a.length; i++) {
             boolean isnull = true;
@@ -41,7 +41,7 @@ public class T_zixulie {
         }
     }
 
-    //最大子序列和
+    //最大子串和
     private static int maxSubListSum(int[] a) {
         int maxSum = 0;
         for (int i = 0; i < a.length; i++) {
@@ -113,5 +113,20 @@ public class T_zixulie {
             }
         }
         return dp[0][len-1];
+    }
+
+    // 最长公共子序列
+    private static int lcs(char[] x, char[] y, int t) {
+        int[][] dp = new int[t + 1][t + 1];
+        for (int i = 1; i <= t; i++) {
+            for (int j = 1; j <= t; j++) {
+                if (x[i-1] == y[j-1]) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+        return dp[t][t];
     }
 }
