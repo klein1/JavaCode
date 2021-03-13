@@ -1,5 +1,7 @@
 package MultiThread;
 
+import MultiThread.ThreadPools.PoolTask;
+
 import java.util.LinkedList;
 
 public class MyThreadPool {
@@ -24,7 +26,7 @@ public class MyThreadPool {
 
     public void execute(Runnable worker){
         synchronized (workerList) {
-            workerList.addLast(worker);
+            workerList.add(worker);
             workerList.notify();
             System.out.println("---加入了一个任务！！！");
         }
